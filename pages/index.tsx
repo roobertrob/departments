@@ -20,7 +20,7 @@ export default function Home() {
 
     const searchItems = (searchValue) => {
       setSearchInput(searchValue)
-      if (searchInput !== ' ') {
+      if (searchInput !== '') {
         const filteredData = todosDeps.filter((item) => {
           return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
         })
@@ -36,7 +36,7 @@ export default function Home() {
     },[searchInput])
 
    function atualizaLayout(searchInput){
-      if(searchInput.length>1){
+      if(searchInput.length>2){
         setClasse("screen")
       } else{
         setClasse("full")
@@ -61,12 +61,12 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
-          {searchInput.length > 1 ? (
-            filteredResults.map((departamento) => {
+          {searchInput.length > 2 ? (
+            filteredResults.map((departamentoFiltrado) => {
               return (
-                <tr key={departamento.id}>
-                  <td className={`flex items-center justify-center mr-1 p-3 border `}>{departamento.id}</td>
-                  <td>{departamento.nome}</td>
+                <tr key={departamentoFiltrado.id}>
+                  <td className={`flex items-center justify-center mr-1 p-3 border `}>{departamentoFiltrado.id}</td>
+                  <td>{departamentoFiltrado.nome}</td>
                 </tr>
               )
             })
@@ -74,7 +74,7 @@ export default function Home() {
             todosDeps.map(departamento => {
               return (
                 <tr key={departamento.id}>
-                  <td className={`flex items-center justify-center mr-1 p-3 border `}>{departamento.id}</td>
+                  <td className={`flex items-center justify-center mr-1 p-3 border rounded-lg`}>{departamento.id}</td>
                   <td>{departamento.nome}</td>
                 </tr>
               )
