@@ -18,21 +18,32 @@ export default function Home() {
     getDepartament()
   }, [])
 
-  const searchItems = (searchValue) => {
-    setSearchInput(searchValue)
-    if (searchInput !== ' ') {
-      const filteredData = todosDeps.filter((item) => {
-        return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
-      })
-      setFilteredResults(filteredData)
+    const searchItems = (searchValue) => {
+      setSearchInput(searchValue)
+      if (searchInput !== ' ') {
+        const filteredData = todosDeps.filter((item) => {
+          return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+        })
+        setFilteredResults(filteredData)
+      }
+      else {
+        setFilteredResults(todosDeps)
+      }
     }
-    else {
-      setFilteredResults(todosDeps)
-    }
-  }
 
+    useEffect(() => {
+      atualizaLayout(searchInput)
+    },[searchInput])
+
+   function atualizaLayout(searchInput){
+      if(searchInput.length>1){
+        setClasse("screen")
+      } else{
+        setClasse("full")
+      }
+    }
+  
   return (
-
     <Layout titulo="Tabela de departamentos" subtitulo="Veja aqui quais são:" classe={classe}>
       <div className={`sm:w-1/4 w-full`}>
         <div className="flex flex-col mb-2">
@@ -41,7 +52,6 @@ export default function Home() {
             onChange={(e) => searchItems(e.target.value)}
           />
         </div>
-
       </div>
       <table className={`sm:w-1/4 min-w-min flex flex-col w-full border rounded-lg`}>
         <thead className={``}>
@@ -51,7 +61,6 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
-
           {searchInput.length > 1 ? (
             filteredResults.map((departamento) => {
               return (
@@ -61,7 +70,6 @@ export default function Home() {
                 </tr>
               )
             })
-
           ) : (
             todosDeps.map(departamento => {
               return (
@@ -74,10 +82,10 @@ export default function Home() {
             )
           )
           }
-          
         </tbody>
       </table>
     </Layout>
 
   )
 }
+

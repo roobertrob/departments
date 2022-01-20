@@ -8,14 +8,14 @@ interface LayoutProps {
     titulo: string,
     subtitulo: string,
     children?: any,
-    classe?:string
+    classe?:string,
+    searchInput?:any,
 }
 export default function Layout(props: LayoutProps) {
     const dados = useAppData();
     return (
         <AutentiqueSe>
             <div className={`${dados.tema} flex h-${props.classe} w-screen`}>
-
                 <div>
                     <MenuLateral />
                 </div>
