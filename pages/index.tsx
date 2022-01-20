@@ -8,7 +8,7 @@ export default function Home() {
   const [classe, setClasse] = useState<string>('');
 
   async function getDepartament() {
-    const URL = 'https://sol-h8ns7cl76-roobertrot.vercel.app/api/todos'
+    const URL = 'http://localhost:3000/api/todos'
     const resp = await fetch(URL)
     const json = await resp.json();
     setTodosDeps(json)
