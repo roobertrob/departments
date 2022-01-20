@@ -1,4 +1,4 @@
-#Rodando o projeto
+##Rodando o projeto
 
 Primeiramente, inicie o app no modo de desenvolvimento na porta 3000. A Api está programada para consultar neste endereço.
 
@@ -10,13 +10,13 @@ yarn dev
 
 Abra [http://localhost:3000](http://localhost:3000) em seu navegador para ver o resultado.
 
-#Tecnologias utilizadas
+##Tecnologias utilizadas
 - NextJS
 - TailwindCSS
 - Typescript
 - Firebase 
 
-#Itens do desafio - Soluções
+##Itens do desafio - Soluções
 
 1. Duas telas (Autenticação e index/home)
 
